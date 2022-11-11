@@ -1,20 +1,22 @@
 // Grab reference to elements
 var startDiv = document.getElementById("start");
-var startQuizBtn = document.getElementById("start-quiz-btn")
+var startQuizBtn = document.getElementById("start-quiz-btn");
 
 var timeLeft = document.getElementById("time-left");
 var times = document.getElementById("time");
 
 var questionDiv = document.getElementById("questions");
-var questionTitle = document.getElementById("question-title")
-var choiceA = document.getElementById("btnA")
-var choiceB = document.getElementById("btnB")
-var choiceC = document.getElementById("btnC")
-var choiceD = document.getElementById("btnD")
-var checkAnswer = document.getElementById("check-answer")
+var questionTitle = document.getElementById("question-title");
+var choiceA = document.getElementById("btnA");
+var choiceB = document.getElementById("btnB");
+var choiceC = document.getElementById("btnC");
+var choiceD = document.getElementById("btnD");
+var checkAnswer = document.getElementById("check-answer");
 
 var scoreDiv = document.getElementById("score");
-var finalScore = document.getElementById("final-score")
+var finalScore = document.getElementById("final-score");
+var submitInitialsBtn = document.getElementById("submit-initials");
+var initialsInput = document.getElementById("initials-input");
 
 var scoreboardDiv = document.getElementById("scoreboard");
 
@@ -107,12 +109,25 @@ function chooseD() {
 function endGame() {
     startDiv.style.display = "none";
     questionDiv.style.display = "none";
-    scoreDiv.style.display = "Block";
+    scoreDiv.style.display = "block";
     scoreboardDiv.style.display = "none";
 
     time.textContent = "Time's up!";
 
     finalScore.textContent = correctAnswers;
+}
+
+// Store initials
+function storeHighscores(event) {
+    event.preventDefault();
+
+    var userScore = {
+        initials: initialsInput.value,
+        score: finalScore.textContent
+    }
+
+    localStorage.setItem("User scores", JSON.stringify(userScore));
+
 }
 
 // Event listeners
@@ -122,3 +137,7 @@ choiceA.addEventListener("click", chooseA);
 choiceB.addEventListener("click", chooseB);
 choiceC.addEventListener("click", chooseC);
 choiceD.addEventListener("click", chooseD);
+
+submitInitialsBtn.addEventListener("click", function(event) {
+    storeHighscores(event);
+})
