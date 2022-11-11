@@ -24,8 +24,9 @@ var highscoreList = document.getElementById("highscore-list");
 var goBackBtn = document.getElementById("go-back");
 
 var questionIndex = 0;
-var totalTime = 5;
+var totalTime = 10;
 var correctAnswers = 0;
+var startTimer;
 
 // Set of questions
 const questions = [
@@ -44,7 +45,7 @@ const questions = [
 
 // Begins the quiz by grabbing questions and starting timer
 function newQuiz() {
-    totalTime = 5;
+    totalTime = 10;
     questionIndex = 0;
     timeLeft.textContent = totalTime;
 
@@ -55,18 +56,17 @@ function newQuiz() {
     scoreboardDiv.style.display = "none";
     timesUp.style.display = "none";
     time.style.display = "block";
+    checkAnswer.style.display = "none";
 
 
 
     var startTimer = setInterval(function() {
         totalTime--;
         timeLeft.textContent = totalTime;
-        if (totalTime <= 0) {
+        if (totalTime <= 0 && questionIndex <= questions.length - 1) {
             clearInterval(startTimer);
             endGame();
-            if (questionIndex < questions.length -1) {
-                endGame();
-        }}
+        }
     }, 1000);
 
     nextQuestion();
@@ -83,6 +83,8 @@ function nextQuestion() {
 
 // Check if questions are correct
 function checkCorrect (answer) {
+    checkAnswer.style.display = "block";
+
     if (questions[questionIndex].answer === questions[questionIndex].choices[answer]) {
         checkAnswer.textContent = "Correct!";
         correctAnswers++;
@@ -91,7 +93,9 @@ function checkCorrect (answer) {
         timeLeft.textContent = totalTime;
         checkAnswer.textContent = "Incorrect! The correct answer is: " + questions[questionIndex].answer;
     }
+
     questionIndex++;
+
     if (questionIndex < questions.length) {
         nextQuestion();
     } else {
