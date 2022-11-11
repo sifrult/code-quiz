@@ -3,7 +3,7 @@ var startDiv = document.getElementById("start");
 var startQuizBtn = document.getElementById("start-quiz-btn");
 
 var timeLeft = document.getElementById("time-left");
-var times = document.getElementById("time");
+var time = document.getElementById("time");
 
 var questionDiv = document.getElementById("questions");
 var questionTitle = document.getElementById("question-title");
@@ -19,6 +19,8 @@ var submitInitialsBtn = document.getElementById("submit-initials");
 var initialsInput = document.getElementById("initials-input");
 
 var scoreboardDiv = document.getElementById("scoreboard");
+var highscoreList = document.getElementById("highscore-list");
+var goBackBtn = document.getElementById("go-back");
 
 var questionIndex = 0;
 var totalTime = 30;
@@ -117,7 +119,7 @@ function endGame() {
     finalScore.textContent = correctAnswers;
 }
 
-// Store initials
+// Store initials in local storage
 function storeHighscores(event) {
     event.preventDefault();
 
@@ -128,10 +130,32 @@ function storeHighscores(event) {
 
     localStorage.setItem("User scores", JSON.stringify(userScore));
 
+    showHighscores();
+
+}
+
+// Show the Highscores page
+function showHighscores() {
+    startDiv.style.display = "none";
+    questionDiv.style.display = "none";
+    scoreDiv.style.display = "none";
+    scoreboardDiv.style.display = "block";
+    time.textContent = "Try again?";
+
+    var storedHighscores = JSON.parse(localStorage.getItem("User scores"));
+    if (storedHighscores !== null) {
+        storedScores = storedHighscores;
+    }
+
+    for (var i = 0; i < storedScores.length; i++) {
+        var li = document.createElement("li");
+        li.textContent = storedScores[i].initials;
+        highscoreList.appendChild(li);
+    }
 }
 
 // Event listeners
-startQuizBtn.addEventListener("click", newQuiz)
+startQuizBtn.addEventListener("click", newQuiz);
 
 choiceA.addEventListener("click", chooseA);
 choiceB.addEventListener("click", chooseB);
@@ -140,4 +164,11 @@ choiceD.addEventListener("click", chooseD);
 
 submitInitialsBtn.addEventListener("click", function(event) {
     storeHighscores(event);
-})
+});
+
+goBackBtn.addEventListener("click", function() {
+    startDiv.style.display = "block";
+    questionDiv.style.display = "none";
+    scoreDiv.style.display = "none";
+    scoreboardDiv.style.display = "none";
+});
