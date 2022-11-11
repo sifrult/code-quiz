@@ -4,6 +4,7 @@ var startQuizBtn = document.getElementById("start-quiz-btn");
 
 var timeLeft = document.getElementById("time-left");
 var time = document.getElementById("time");
+var timesUp = document.getElementById("times-up");
 
 var questionDiv = document.getElementById("questions");
 var questionTitle = document.getElementById("question-title");
@@ -23,7 +24,7 @@ var highscoreList = document.getElementById("highscore-list");
 var goBackBtn = document.getElementById("go-back");
 
 var questionIndex = 0;
-var totalTime = 30;
+var totalTime = 5;
 var correctAnswers = 0;
 
 // Set of questions
@@ -43,12 +44,19 @@ const questions = [
 
 // Begins the quiz by grabbing questions and starting timer
 function newQuiz() {
+    totalTime = 5;
+    questionIndex = 0;
+    timeLeft.textContent = totalTime;
+
+
     startDiv.style.display = "none";
     questionDiv.style.display = "block";
     scoreDiv.style.display = "none";
     scoreboardDiv.style.display = "none";
+    timesUp.style.display = "none";
+    time.style.display = "block";
 
-    timeLeft.textContent = totalTime;
+
 
     var startTimer = setInterval(function() {
         totalTime--;
@@ -113,8 +121,8 @@ function endGame() {
     questionDiv.style.display = "none";
     scoreDiv.style.display = "block";
     scoreboardDiv.style.display = "none";
-
-    time.textContent = "Time's up!";
+    timesUp.style.display = "block";
+    time.style.display = "none";
 
     finalScore.textContent = correctAnswers;
 }
@@ -128,7 +136,7 @@ function storeHighscores(event) {
         score: finalScore.textContent
     }
 
-    localStorage.setItem("User scores", JSON.stringify(userScore));
+    window.localStorage.setItem("User scores", JSON.stringify(userScore));
 
     showHighscores();
 
@@ -140,7 +148,8 @@ function showHighscores() {
     questionDiv.style.display = "none";
     scoreDiv.style.display = "none";
     scoreboardDiv.style.display = "block";
-    time.textContent = "Try again?";
+    time.style.display = "none";
+    timesUp.style.display = "block";
 
     var storedHighscores = JSON.parse(localStorage.getItem("User scores"));
     if (storedHighscores !== null) {
@@ -171,4 +180,6 @@ goBackBtn.addEventListener("click", function() {
     questionDiv.style.display = "none";
     scoreDiv.style.display = "none";
     scoreboardDiv.style.display = "none";
+    timesUp.style.display = "none";
+    time.style.display = "none";
 });
