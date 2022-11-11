@@ -3,6 +3,7 @@ var startDiv = document.getElementById("start");
 var startQuizBtn = document.getElementById("start-quiz-btn")
 
 var timeLeft = document.getElementById("time-left");
+var timesUp = document.getElementById("times-up");
 
 var questionDiv = document.getElementById("questions");
 var questionTitle = document.getElementById("question-title")
@@ -13,6 +14,7 @@ var choiceD = document.getElementById("btnD")
 var checkAnswer = document.getElementById("check-answer")
 
 var scoreDiv = document.getElementById("score");
+var finalScore = document.getElementById("final-score")
 
 var scoreboardDiv = document.getElementById("scoreboard");
 
@@ -41,7 +43,6 @@ function newQuiz() {
     scoreDiv.style.display = "none";
     scoreboardDiv.style.display = "none";
 
-
     timeLeft.textContent = totalTime;
 
     var startTimer = setInterval(function() {
@@ -49,7 +50,9 @@ function newQuiz() {
         timeLeft.textContent = totalTime;
         if (totalTime <= 0) {
             clearInterval(startTimer);
-        }
+            if (questionIndex < questions.length -1) {
+                endGame();
+        }}
     }, 1000);
 
     nextQuestion();
@@ -76,6 +79,8 @@ function checkCorrect (answer) {
     questionIndex++;
     if (questionIndex < questions.length) {
         nextQuestion();
+    } else {
+        endGame();
     }
 }
 
@@ -93,6 +98,17 @@ function chooseC() {
 
 function chooseD() {
     checkCorrect(3);
+}
+
+// What happens when the game ends
+function endGame() {
+    startDiv.style.display = "none";
+    questionDiv.style.display = "none";
+    scoreDiv.style.display = "Block";
+    scoreboardDiv.style.display = "none";
+
+
+    timesUp.textContent = "Time's up!";
 }
 
 // Event listeners
