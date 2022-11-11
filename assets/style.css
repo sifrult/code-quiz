@@ -21,7 +21,7 @@ a {
     position: relative;
   }
 
-  a::before {
+a::before {
     content: '';
     background-color: #ED796675;
     position: absolute;
@@ -31,17 +31,17 @@ a {
     height: 3px;
     z-index: -1;
     transition: all .3s ease-in-out;
-  }
+}
 
-  a:hover::before {
+a:hover::before {
     bottom: -2px;
     height: 120%;
-  }
+}
 
 /* Body style */
 #start {
-    width: 75%;
-    margin: 20% auto;
+    width: 65%;
+    margin: 50px auto;
     text-align: center;
 }
 
@@ -53,7 +53,7 @@ h1 {
 p {
     color: #141850;
     font-size: 130%;
-    margin: 10% 0;
+    margin: 25px 0;
 }
  /* Button style */
 .btn {
