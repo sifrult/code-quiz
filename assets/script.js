@@ -67,16 +67,26 @@ function nextQuestion() {
 function checkCorrect (answer) {
     if (questions[questionIndex].answer === questions[questionIndex].choices[answer]) {
         checkAnswer.textContent = "Correct!";
+    } else {
+        checkAnswer.textContent = "Incorrect! The correct answer is: " + questions[questionIndex].answer;
     }
 }
 
-function chooseA() { checkCorrect(0); }
+function chooseA() {
+   checkCorrect(0);
+}
 
-function chooseB() { checkCorrect(1); }
+function chooseB() {
+    checkCorrect(1);
+}
 
-function chooseC() { checkCorrect(2); }
+function chooseC() {
+    checkCorrect(2);
+}
 
-function chooseD() { checkCorrect(3); }
+function chooseD() {
+    checkCorrect(3);
+}
 
 // Event listeners
 startQuizBtn.addEventListener("click", newQuiz)
