@@ -70,6 +70,10 @@ function checkCorrect (answer) {
     } else {
         checkAnswer.textContent = "Incorrect! The correct answer is: " + questions[questionIndex].answer;
     }
+    questionIndex++;
+    if (questionIndex < questions.length) {
+        nextQuestion();
+    }
 }
 
 function chooseA() {
