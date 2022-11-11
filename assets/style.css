@@ -1,8 +1,18 @@
+body {
+    background-color: #fae5df;
+}
+
 li {
     list-style-type: none;
 }
 
 ul {
     display: flex;
-    justify-content: space-around;
+    justify-content:space-around;
+}
+
+#start {
+    border: 1px solid black;
+    width: 75%;
+    margin: auto;
 }
