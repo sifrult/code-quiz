@@ -17,6 +17,7 @@ var scoreDiv = document.getElementById("score");
 var scoreboardDiv = document.getElementById("scoreboard");
 
 questionIndex = 0;
+var totalTime = 200;
 
 // Set of questions
 const questions = [
@@ -38,9 +39,9 @@ function newQuiz() {
     startDiv.style.display = "none";
     questionDiv.style.display = "block";
     scoreDiv.style.display = "none";
-    scoreboardDiv.style.display = "none"
+    scoreboardDiv.style.display = "none";
 
-    var totalTime = 20
+
     timeLeft.textContent = totalTime;
 
     var startTimer = setInterval(function() {
@@ -68,6 +69,8 @@ function checkCorrect (answer) {
     if (questions[questionIndex].answer === questions[questionIndex].choices[answer]) {
         checkAnswer.textContent = "Correct!";
     } else {
+        totalTime -= 10;
+        timeLeft.textContent = totalTime;
         checkAnswer.textContent = "Incorrect! The correct answer is: " + questions[questionIndex].answer;
     }
     questionIndex++;
