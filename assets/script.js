@@ -18,8 +18,9 @@ var finalScore = document.getElementById("final-score")
 
 var scoreboardDiv = document.getElementById("scoreboard");
 
-questionIndex = 0;
-var totalTime = 2;
+var questionIndex = 0;
+var totalTime = 30;
+var correctAnswers = 0;
 
 // Set of questions
 const questions = [
@@ -72,6 +73,7 @@ function nextQuestion() {
 function checkCorrect (answer) {
     if (questions[questionIndex].answer === questions[questionIndex].choices[answer]) {
         checkAnswer.textContent = "Correct!";
+        correctAnswers++;
     } else {
         totalTime -= 10;
         timeLeft.textContent = totalTime;
@@ -109,6 +111,8 @@ function endGame() {
     scoreboardDiv.style.display = "none";
 
     time.textContent = "Time's up!";
+
+    finalScore.textContent = correctAnswers;
 }
 
 // Event listeners
