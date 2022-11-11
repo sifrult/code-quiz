@@ -13,7 +13,7 @@
             <header>
                 <ul>
                     <li><a href="#">View Highscores</a></li>
-                    <li>Time: 0</li>
+                    <li>Time remaining: <span>0</span></li>
                 </ul>
             </header>
 
@@ -21,18 +21,19 @@
                 <div id="start">
                     <h1>Coding Quiz Challenge</h1>
                     <p>Let's test your knowledge on JavaScript fundamentals! Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your time by ten seconds!</p>
-                    <button type="button" class="btn">Start Quiz</button>
+                    <button type="button" id="start-quiz-btn" class="btn">Start Quiz</button>
                 </div>
 
-                <div id="questions">
+                <div id="questions" style="display: none;">
                     <p>Question title</p>
                     <p><button id="btn1">Button 1</button></p>
                     <p><button id="btn2">Button 2</button></p>
                     <p><button id="btn3">Button 3</button></p>
                     <p><button id="btn4">Button 4</button></p>
+                    <p>Check answer</p>
                 </div>
 
-                <div id="score">
+                <div id="score" style="display: none;">
                     <h2>Your final score is <span></span>!</h2>
                     <form>
                         <p>Enter your initials:</p>
@@ -41,7 +42,7 @@
                     </form>
                 </div>
 
-                <div id="scoreboard">
+                <div id="scoreboard" style="display: none;">
                     <h2>Highscores</h2>
                     <div>List of scores go here</div>
                     <p>
