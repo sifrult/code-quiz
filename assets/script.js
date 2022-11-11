@@ -6,10 +6,11 @@ var timeLeft = document.getElementById("time-left");
 
 var questionDiv = document.getElementById("questions");
 var questionTitle = document.getElementById("question-title")
-var choiceA = document.getElementById("btn1")
-var choiceB = document.getElementById("btn2")
-var choiceC = document.getElementById("btn3")
-var choiceD = document.getElementById("btn4")
+var choiceA = document.getElementById("btnA")
+var choiceB = document.getElementById("btnB")
+var choiceC = document.getElementById("btnC")
+var choiceD = document.getElementById("btnD")
+var checkAnswer = document.getElementById("check-answer")
 
 var scoreDiv = document.getElementById("score");
 
@@ -23,6 +24,11 @@ const questions = [
         question: "Inside which HTML element do we put the JavaScript?",
         choices: ["a. <js>", "b. <javascript>", "c. <scripting>", "d. <script>"],
         answer: "d. <script>"
+    },
+    {
+        question: "String values must be enclosed within _____ when being assigned to variables.",
+        choices: ["a. commas", "b. curly brackets", "c. quotes", "d. parenthesis"],
+        answer: "c. quotes"
     }
 ]
 
@@ -49,7 +55,6 @@ function newQuiz() {
 }
 
 // Display questions and answer options
-
 function nextQuestion() {
     questionTitle.textContent = questions[questionIndex].question;
     choiceA.textContent = questions[questionIndex].choices[0];
@@ -58,5 +63,25 @@ function nextQuestion() {
     choiceD.textContent = questions[questionIndex].choices[3];
 }
 
+// Check if questions are correct
+function checkCorrect (answer) {
+    if (questions[questionIndex].answer === questions[questionIndex].choices[answer]) {
+        checkAnswer.textContent = "Correct!";
+    }
+}
+
+function chooseA() { checkCorrect(0); }
+
+function chooseB() { checkCorrect(1); }
+
+function chooseC() { checkCorrect(2); }
+
+function chooseD() { checkCorrect(3); }
+
 // Event listeners
 startQuizBtn.addEventListener("click", newQuiz)
+
+choiceA.addEventListener("click", chooseA);
+choiceB.addEventListener("click", chooseB);
+choiceC.addEventListener("click", chooseC);
+choiceD.addEventListener("click", chooseD);
