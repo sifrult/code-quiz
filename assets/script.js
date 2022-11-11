@@ -3,7 +3,7 @@ var startDiv = document.getElementById("start");
 var startQuizBtn = document.getElementById("start-quiz-btn")
 
 var timeLeft = document.getElementById("time-left");
-var timesUp = document.getElementById("times-up");
+var times = document.getElementById("time");
 
 var questionDiv = document.getElementById("questions");
 var questionTitle = document.getElementById("question-title")
@@ -19,7 +19,7 @@ var finalScore = document.getElementById("final-score")
 var scoreboardDiv = document.getElementById("scoreboard");
 
 questionIndex = 0;
-var totalTime = 200;
+var totalTime = 2;
 
 // Set of questions
 const questions = [
@@ -50,6 +50,7 @@ function newQuiz() {
         timeLeft.textContent = totalTime;
         if (totalTime <= 0) {
             clearInterval(startTimer);
+            endGame();
             if (questionIndex < questions.length -1) {
                 endGame();
         }}
@@ -107,8 +108,7 @@ function endGame() {
     scoreDiv.style.display = "Block";
     scoreboardDiv.style.display = "none";
 
-
-    timesUp.textContent = "Time's up!";
+    time.textContent = "Time's up!";
 }
 
 // Event listeners
