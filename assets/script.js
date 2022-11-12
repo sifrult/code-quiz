@@ -49,7 +49,6 @@ function newQuiz() {
     questionIndex = 0;
     timeLeft.textContent = totalTime;
 
-
     startDiv.style.display = "none";
     questionDiv.style.display = "block";
     scoreDiv.style.display = "none";
@@ -135,15 +134,21 @@ function endGame() {
 function storeHighscores(event) {
     event.preventDefault();
 
-    var userScore = {
+    startDiv.style.display = "none";
+    questionDiv.style.display = "none";
+    scoreDiv.style.display = "block";
+    scoreboardDiv.style.display = "none";
+    time.style.display = "none";
+    timesUp.style.display = "block";
+
+    const newScore = {
         initials: initialsInput.value,
-        score: finalScore.textContent
+        score: finalScore.textContent,
     }
 
-    window.localStorage.setItem("User scores", JSON.stringify(userScore));
+    window.localStorage.setItem("newScore", JSON.stringify(newScore));
 
     showHighscores();
-
 }
 
 // Show the Highscores page
@@ -155,16 +160,19 @@ function showHighscores() {
     time.style.display = "none";
     timesUp.style.display = "block";
 
-    var storedHighscores = JSON.parse(localStorage.getItem("User scores"));
-    if (storedHighscores !== null) {
-        storedScores = storedHighscores;
+    var savedScores = window.localStorage.getItem("newScore")
+    console.log(savedScores);
+
+   // highscoreList.innerHTML = "";
+    highscoreList.style.display = "block"
+
+    var storedScore = JSON.parse(savedScores)
+
+
+    if (storedScore !== null) {
+        highscoreList.innerHTML = storedScore.initials + " : " + storedScore.score;
     }
 
-    for (var i = 0; i < storedScores.length; i++) {
-        var li = document.createElement("li");
-        li.textContent = storedScores[i].initials;
-        highscoreList.appendChild(li);
-    }
 }
 
 // Event listeners
