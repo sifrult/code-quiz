@@ -143,4 +143,5 @@ h2 {
 #highscore-list {
     color: #141850;
     font-size: 110%;
+    text-transform: uppercase;
 }
