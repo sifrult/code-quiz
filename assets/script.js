@@ -12,6 +12,7 @@ var choiceA = document.getElementById("btnA");
 var choiceB = document.getElementById("btnB");
 var choiceC = document.getElementById("btnC");
 var choiceD = document.getElementById("btnD");
+var lineBreak = document.getElementById("line-break");
 var checkAnswer = document.getElementById("check-answer");
 
 var scoreDiv = document.getElementById("score");
@@ -132,6 +133,7 @@ function nextQuestion() {
 
 // Check if questions are correct
 function checkCorrect (answer) {
+    lineBreak.style.display = "block";
     checkAnswer.style.display = "block";
 
     if (questions[questionIndex].answer === questions[questionIndex].choices[answer]) {
@@ -140,7 +142,7 @@ function checkCorrect (answer) {
     } else {
         totalTime -= 10;
         timeLeft.textContent = totalTime;
-        checkAnswer.textContent = "Incorrect! The correct answer is: " + questions[questionIndex].answer;
+        checkAnswer.textContent = "Incorrect! The correct answer was: " + questions[questionIndex].answer;
     }
 
     questionIndex++;
@@ -273,6 +275,7 @@ goBackBtn.addEventListener("click", function() {
     scoreboardDiv.style.display = "none";
     timesUp.style.display = "none";
     time.style.display = "none";
+    lineBreak.style.display = "none";
 });
 
 clearScoresBtn.addEventListener("click", function() {
