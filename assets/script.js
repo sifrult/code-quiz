@@ -179,13 +179,22 @@ function endGame() {
     timesUp.style.display = "block";
     time.style.display = "none";
 
-
     finalScore.textContent = correctAnswers;
 }
 
 // Store initials in local storage
 function storeHighscores(event) {
     event.preventDefault();
+
+     if (initialsInput.value === "") {
+        alert("Please enter your initials");
+        return;
+    }
+    if (!/^[a-zA-Z]*$/g.test(initialsInput.value)) {
+        alert("Invalid characters");
+        initialsInput.focus();
+        return false;
+    }
 
     startDiv.style.display = "none";
     questionDiv.style.display = "none";
@@ -205,7 +214,7 @@ function storeHighscores(event) {
     };
 
     var newScore = {
-        initials: initialsInput.value,
+        initials: initialsInput.value.toUppercase(),
         score: finalScore.textContent,
     }
     console.log(newScore);
