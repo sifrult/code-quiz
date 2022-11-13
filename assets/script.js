@@ -23,6 +23,7 @@ var scoreboardDiv = document.getElementById("scoreboard");
 var highscoreList = document.getElementById("highscore-list");
 var goBackBtn = document.getElementById("go-back");
 var clearScoresBtn = document.getElementById("clear-scores")
+var viewHighscores = document.getElementById("view-highscores");
 
 
 var questionIndex = 0;
@@ -164,6 +165,7 @@ function storeHighscores(event) {
 
     showHighscores();
 }
+
 var i = 0;
 // Show the Highscores page
 function showHighscores() {
@@ -174,7 +176,6 @@ function showHighscores() {
     time.style.display = "none";
     timesUp.style.display = "block";
 
-
     var savedScores = window.localStorage.getItem("high scores")
     if (savedScores !== null) {
         stored = savedScores;
@@ -183,10 +184,12 @@ function showHighscores() {
     console.log(savedScores);
 
     var storedScore = JSON.parse(stored)
+
     if (highscoreList.textContent = "Scores cleared!") {
-        i=0;
+        i = 0;
         highscoreList.textContent = "";
     }
+
     for (; i < storedScore.length; i++) {
 
         var printScore = document.createElement("p");
@@ -204,6 +207,12 @@ choiceA.addEventListener("click", chooseA);
 choiceB.addEventListener("click", chooseB);
 choiceC.addEventListener("click", chooseC);
 choiceD.addEventListener("click", chooseD);
+
+viewHighscores.addEventListener("click", function() {
+    showHighscores();
+    timesUp.style.display = "none";
+    time.style.display = "none";
+})
 
 submitInitialsBtn.addEventListener("click", function(event) {
     storeHighscores(event);
