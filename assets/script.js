@@ -24,6 +24,7 @@ var highscoreList = document.getElementById("highscore-list");
 var goBackBtn = document.getElementById("go-back");
 var clearScoresBtn = document.getElementById("clear-scores")
 
+
 var questionIndex = 0;
 var totalTime = 10;
 var correctAnswers = 0;
@@ -58,8 +59,6 @@ function newQuiz() {
     timesUp.style.display = "none";
     time.style.display = "block";
     checkAnswer.style.display = "none";
-
-
 
     var startTimer = setInterval(function() {
         totalTime--;
@@ -129,6 +128,7 @@ function endGame() {
     timesUp.style.display = "block";
     time.style.display = "none";
 
+
     finalScore.textContent = correctAnswers;
 }
 
@@ -143,6 +143,7 @@ function storeHighscores(event) {
     time.style.display = "none";
     timesUp.style.display = "block";
 
+
     var savedHighscores = localStorage.getItem("high scores")
     var scoresArray;
 
@@ -156,7 +157,7 @@ function storeHighscores(event) {
         initials: initialsInput.value,
         score: finalScore.textContent,
     }
-
+    console.log(newScore);
     scoresArray.push(newScore);
 
     window.localStorage.setItem("high scores", JSON.stringify(scoresArray));
@@ -164,7 +165,7 @@ function storeHighscores(event) {
     showHighscores();
 }
 var i = 0;
-var storedScore = [];
+
 
 // Show the Highscores page
 function showHighscores() {
@@ -175,19 +176,20 @@ function showHighscores() {
     time.style.display = "none";
     timesUp.style.display = "block";
 
+
     var savedScores = window.localStorage.getItem("high scores")
     if (savedScores !== null) {
         stored = savedScores;
-    } else {
-        return;
     }
 
+    console.log(savedScores);
     var storedScore = JSON.parse(stored)
 
     for (; i < storedScore.length; i++){
         var printScore = document.createElement("p");
         printScore.textContent = storedScore[i].initials + ": " + storedScore[i].score;
         highscoreList.appendChild(printScore);
+
     }
 
     correctAnswers = 0;
@@ -212,9 +214,10 @@ goBackBtn.addEventListener("click", function() {
     scoreboardDiv.style.display = "none";
     timesUp.style.display = "none";
     time.style.display = "none";
+
 });
 
 clearScoresBtn.addEventListener("click", function() {
-    window.localStorage.removeItem("high scores");
-    highscoreList.textContent = "Highscores cleared!";
+    localStorage.removeItem("high scores");
+    highscoreList.textContent = "";
 })
