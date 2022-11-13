@@ -91,6 +91,7 @@ p {
     font-size: 130%;
     margin: 25px 0;
 }
+
 .choicebtn {
     background-color: #F5CAC2;
     border: none;
@@ -111,6 +112,12 @@ p {
 .choicebtn:hover {
     background-color: #ED7966;
     color: white;
+}
+
+hr {
+    border: 1px dashed #141850;
+    width: 50%;
+    margin: auto;
 }
 
 /* Score screen style */
