@@ -81,12 +81,16 @@ p {
 
 /* Question screen style */
 #questions {
-    border: 1px solid black;
     width: 65%;
     margin: 50px auto;
     text-align: center;
 }
 
+#question-title {
+    color: #141850;
+    font-size: 130%;
+    margin: 25px 0;
+}
 .choicebtn {
     background-color: #F5CAC2;
     border: none;
@@ -111,16 +115,25 @@ p {
 
 /* Score screen style */
 #score {
-    border: 1px solid black;
     width: 65%;
     margin: 50px auto;
     text-align: center;
 }
 
+h2 {
+    color: #141850;
+    font-size: 150%;
+    margin: 25px 0;
+}
+
 /* Scoreboard screen style */
 #scoreboard {
-    border: 1px solid black;
     width: 65%;
     margin: 50px auto;
     text-align: center;
+}
+
+#highscore-list {
+    color: #141850;
+    font-size: 110%;
 }
