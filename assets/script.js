@@ -165,8 +165,6 @@ function storeHighscores(event) {
     showHighscores();
 }
 var i = 0;
-
-
 // Show the Highscores page
 function showHighscores() {
     startDiv.style.display = "none";
@@ -183,13 +181,17 @@ function showHighscores() {
     }
 
     console.log(savedScores);
-    var storedScore = JSON.parse(stored)
 
-    for (; i < storedScore.length; i++){
+    var storedScore = JSON.parse(stored)
+    if (highscoreList.textContent = "Scores cleared!") {
+        i=0;
+        highscoreList.textContent = "";
+    }
+    for (; i < storedScore.length; i++) {
+
         var printScore = document.createElement("p");
         printScore.textContent = storedScore[i].initials + ": " + storedScore[i].score;
         highscoreList.appendChild(printScore);
-
     }
 
     correctAnswers = 0;
@@ -218,6 +220,6 @@ goBackBtn.addEventListener("click", function() {
 });
 
 clearScoresBtn.addEventListener("click", function() {
-    localStorage.removeItem("high scores");
-    highscoreList.textContent = "";
+    localStorage.clear("high scores");
+    highscoreList.textContent = "Scores cleared!";
 })
