@@ -95,12 +95,19 @@ const questions = [
     }
 ]
 
-// Begins the quiz by grabbing questions and starting timer
-function newQuiz() {
+// Resets the quiz
+function reset() {
     totalTime = 150;
     questionIndex = 0;
-    timeLeft.textContent = totalTime;
     initialsInput.textContent = "";
+    i = 0;
+    correctAnswers = 0;
+    highscoreList.textContent = "";
+}
+
+// Begins the quiz by grabbing questions and starting timer
+function newQuiz() {
+    timeLeft.textContent = totalTime;
 
     startDiv.style.display = "none";
     questionDiv.style.display = "block";
@@ -113,7 +120,7 @@ function newQuiz() {
     var startTimer = setInterval(function() {
         totalTime--;
         timeLeft.textContent = totalTime;
-        if (totalTime <= 0 && questionIndex <= questions.length - 1) {
+        if (totalTime <= 0 || questionIndex == questions.length - 1) {
             clearInterval(startTimer);
             endGame();
         }
@@ -180,16 +187,18 @@ function endGame() {
     time.style.display = "none";
 
     finalScore.textContent = correctAnswers;
+
 }
 
 // Store initials in local storage
 function storeHighscores(event) {
     event.preventDefault();
 
-     if (initialsInput.value === "") {
+    if (initialsInput.value === "") {
         alert("Please enter your initials");
         return;
     }
+
     if (!/^[a-zA-Z]*$/g.test(initialsInput.value)) {
         alert("Invalid characters");
         initialsInput.focus();
@@ -203,7 +212,6 @@ function storeHighscores(event) {
     time.style.display = "none";
     timesUp.style.display = "block";
 
-
     var savedHighscores = localStorage.getItem("high scores")
     var scoresArray;
 
@@ -214,7 +222,7 @@ function storeHighscores(event) {
     };
 
     var newScore = {
-        initials: initialsInput.value.toUppercase(),
+        initials: initialsInput.value,
         score: finalScore.textContent,
     }
     console.log(newScore);
@@ -244,19 +252,12 @@ function showHighscores() {
 
     var storedScore = JSON.parse(stored)
 
-    if (highscoreList.textContent = "Scores cleared!") {
-        i = 0;
-        highscoreList.textContent = "";
-    }
-
     for (; i < storedScore.length; i++) {
 
         var printScore = document.createElement("p");
         printScore.textContent = storedScore[i].initials + ": " + storedScore[i].score;
         highscoreList.appendChild(printScore);
     }
-
-    correctAnswers = 0;
 }
 
 // Event listeners
@@ -285,6 +286,7 @@ goBackBtn.addEventListener("click", function() {
     timesUp.style.display = "none";
     time.style.display = "none";
     lineBreak.style.display = "none";
+    reset();
 });
 
 clearScoresBtn.addEventListener("click", function() {
