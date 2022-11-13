@@ -25,7 +25,6 @@ var goBackBtn = document.getElementById("go-back");
 var clearScoresBtn = document.getElementById("clear-scores")
 var viewHighscores = document.getElementById("view-highscores");
 
-
 var questionIndex = 0;
 var totalTime = 150;
 var correctAnswers = 0;
@@ -93,9 +92,7 @@ const questions = [
         choices: ["a. onclick", "b. onchange", "c. onmouseover", "d. onmouseclick"],
         answer: "a. onclick"
     }
-
 ]
-
 
 // Begins the quiz by grabbing questions and starting timer
 function newQuiz() {
@@ -276,7 +273,6 @@ goBackBtn.addEventListener("click", function() {
     scoreboardDiv.style.display = "none";
     timesUp.style.display = "none";
     time.style.display = "none";
-
 });
 
 clearScoresBtn.addEventListener("click", function() {
