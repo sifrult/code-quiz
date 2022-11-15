@@ -120,7 +120,7 @@ function newQuiz() {
     var startTimer = setInterval(function() {
         totalTime--;
         timeLeft.textContent = totalTime;
-        if (totalTime <= 0 || questionIndex == questions.length - 1) {
+        if (totalTime <= 0 || questionIndex == questions.length) {
             clearInterval(startTimer);
             endGame();
         }
