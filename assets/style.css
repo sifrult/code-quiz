@@ -115,9 +115,15 @@ p {
 }
 
 hr {
-    border: 1px dashed #141850;
+    border: 1px dashed #ED796675;
     width: 50%;
     margin: auto;
+}
+
+#check-answer {
+    color: #141850;
+    font-size: 130%;
+    margin: 25px 0;
 }
 
 /* Score screen style */

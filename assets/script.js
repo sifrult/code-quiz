@@ -241,7 +241,7 @@ function showHighscores() {
     scoreDiv.style.display = "none";
     scoreboardDiv.style.display = "block";
     time.style.display = "none";
-    timesUp.style.display = "block";
+    timesUp.style.display = "none";
 
     var savedScores = window.localStorage.getItem("high scores")
     if (savedScores !== null) {
