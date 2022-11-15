@@ -61,7 +61,7 @@ const questions = [
     {
         question: "How do you call a function named myFunction?",
         choices: ["a. call myFunction()", "b. call function myFunction()", "c. myFunction()", "d. call myFunction"],
-        answer: "c. myFunctions()"
+        answer: "c. myFunction()"
     },
     {
         question: "To see if two variables are equal in an if / else statement you would use ____.",
