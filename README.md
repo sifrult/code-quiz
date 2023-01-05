@@ -1,31 +1,11 @@
-# Title
+# Code Quiz
+
+## Name
+JavaScript Code Quiz
 
 ## Description
-Short description, or can be long, too 
+This program generates a JavaScript quiz in which you have 150 seconds to answer all the questions. When you answer a question correctly, you receive 1 point. When you answer a question incorrectly, 10 seconds gets deducted from the total time. At the end of the quiz, you can input your initials to store your score, and you can go back and try the quiz again to see if you get a better score.
+To view in pages, click [here](https://sifrult.github.io/code-quiz/)
 
-[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
-
- ## Table of Contents
-  * [Installation](#installation)
-  * [Usage](#usage)
-  * [Contributions](#how-to-Contribute)
-  * [Tests](#tests)
-   
-## Installation
-This one is optional. Just show step by step of how to get the app running, anything that needs to be installed, etc
- 
-## Usage
-This one is also optional. Just provide examples of how to use.
- 
-## License
-
-Usage is provided under [The Unlicense](http://unlicense.org/) license.
- 
-## How to Contribute
-Optional (licenses was also optional). If you want others to contribute, explain how you want them to do so.
- 
-## Tests
-Optional. If you have any tests, explain how they're run.
-
-## Questions?
-Visit my GitHub profile [here](https://github.com/Sifrult). You can also send me an email at <a href='mailto:amy@email.com'>amy@email.com</a> for any additional questions.
+## Visuals
+![screenshot](./assets/screenshot.PNG)
